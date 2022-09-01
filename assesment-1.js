@@ -9,9 +9,7 @@ function secondLargest(array) {
         
       } else if (second < array[i]) {
         second = array[i];
-        
-        
-      }else {
+      } else {
         continue;
       }
     }
@@ -25,15 +23,15 @@ function secondLargest(array) {
     var count = new Array();
     for (let i=0; i<string.length ; i++) {
       if (string.charCodeAt(i)>96 && string.charCodeAt(i)<123) {
-      if (alpha.includes(string.charAt(i))){
+         if (alpha.includes(string.charAt(i))){
          var index=alpha.indexOf(string.charAt(i));
          count[index]+=1;
-       } else {
+        } else {
         alpha.push(string.charAt(i));
         var b=alpha.length-1;
         count[b]=1;
       }
-    }
+     }
     }
     var res = new Object();
     for (let j=0; j<alpha.length; j++){
@@ -49,11 +47,9 @@ function secondLargest(array) {
   function flatten(unflatObject) {
      var res={};
       for (let i in unflatObject){ 
-      if ((typeof unflatObject[i]) === 'object') {
+        if ((typeof unflatObject[i]) === 'object') {
               const temp = flatten(unflatObject[i]);
               for (const j in temp) {
-   
-                  
                   res[i + '.' + j] = temp[j];
               }
           } else {

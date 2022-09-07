@@ -1,6 +1,6 @@
 
 const users = localStorage.getItem("users")?(localStorage.getItem("users")).split(","): new Array();
-const table = document.getElementById("table");
+const table = document.querySelector("tbody");
 const loginPage = document.getElementById("loginPage");
 const dashBoard = document.getElementById("dashBoard");
 const editForm = document.getElementById("editForm");
@@ -37,7 +37,7 @@ function registerUser(){
 function logOut(){
 	  dashBoard.style.display="none"
 	  loginPage.style.display="block"
-    table.innerHTML=""
+    
  };      
 function createTable(email){
 	users.map(key=>{
@@ -81,8 +81,9 @@ function submit(){
     currentuser.role=document.getElementById("edittedrole").value;
     currentuser.gender=document.getElementById("edittedgender").value;
     localStorage.setItem(currentuser.email,JSON.stringify(currentuser));
-    creatRow(currentuser)
-	  editForm.style.display="none"
+    let tr=creatRow(currentuser)
+    createEditBtn(tr)
+    editForm.style.display="none"
 };
 function createEditBtn(tr){
 
@@ -94,9 +95,9 @@ function createEditBtn(tr){
    tr.remove()});
    let td = document.createElement("td");
    td.appendChild(editButton)
-   tr.appendChild(td)
-   table.appendChild(tr)		
-}
+   tr.appendChild(td) 
+   table.appendChild(tr)
+};
 function createDeleteBtn(tr,key){
 	let deleteButton=document.createElement("button")
 	deleteButton.innerText="Delete";
